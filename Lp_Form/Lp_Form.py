@@ -40,11 +40,10 @@ class Form(QWidget):
         b_eq = [int(self.totalAuditory), int(self.totalBedget)]
         A_ub = [[int(self.radioAgents), int(self.televisionAgents), 0, 0, 0, 0], [1, 0, 0, 0, 0, 0]]
         b_ub = [int(self.totalAgentsCount), int(self.radioUpperLimit)]
-        bounds = [(0, None), (0, None), (0, None), (0, None), (0, None), (0, None)]
         if len(A) != 0:
             A_eq.append(A)
             b_eq.append(b)
-        res = linprog(c, A_ub, b_ub, A_eq, b_eq, bounds)
+        res = linprog(c, A_ub, b_ub, A_eq, b_eq)
         return res
 
 if __name__ == '__main__':
